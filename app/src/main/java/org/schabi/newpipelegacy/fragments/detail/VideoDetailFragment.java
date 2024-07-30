@@ -495,7 +495,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
 
     private void toggleTitleAndDescription() {
         if (videoDescriptionRootLayout.getVisibility() == View.VISIBLE) {
-            videoTitleTextView.setMaxLines(1);
+            videoTitleTextView.setMaxLines(2);
             videoDescriptionRootLayout.setVisibility(View.GONE);
             videoDescriptionView.setFocusable(false);
             videoTitleToggleArrow.setImageResource(
@@ -1093,6 +1093,11 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
 
     private void showContent() {
         contentRootLayoutHiding.setVisibility(View.VISIBLE);
+        final boolean showDescriptionOnLoad = PreferenceManager.getDefaultSharedPreferences(activity)
+                .getBoolean(getString(R.string.always_expand_description_key), false);
+        if (showDescriptionOnLoad) {
+            toggleTitleAndDescription();
+        }
     }
 
     protected void setInitialData(final int sid, final String u, final String title) {
@@ -1144,7 +1149,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo>
         animateView(positionView, false, 50);
 
         videoTitleTextView.setText(name != null ? name : "");
-        videoTitleTextView.setMaxLines(1);
+        videoTitleTextView.setMaxLines(2);
         animateView(videoTitleTextView, true, 0);
 
         videoDescriptionRootLayout.setVisibility(View.GONE);

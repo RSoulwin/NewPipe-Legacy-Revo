@@ -440,9 +440,6 @@ public class MainActivity extends AppCompatActivity {
         drawerItems.getMenu()
                 .add(R.id.menu_tabs_group, ITEM_ID_HISTORY, ORDER, R.string.action_history)
                 .setIcon(ThemeHelper.resolveResourceIdFromAttr(this, R.attr.ic_history));
-        drawerItems.getMenu()
-                .add(R.id.menu_tabs_group, ITEM_ID_BG_PLAYER, ORDER, R.string.background_player)
-                .setIcon(ThemeHelper.resolveResourceIdFromAttr(this, R.attr.ic_play_arrow));
 
         //Settings and About
         drawerItems.getMenu()
